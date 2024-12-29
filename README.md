@@ -10,6 +10,7 @@ A powerful command-line tool for automating GitHub contributions with customizab
 - 🎯 **Dry Run Mode**: Test your configuration without making actual commits
 - 💾 **Config Backup/Restore**: Easily backup and restore your settings
 - 📝 **Custom Messages**: Personalize your commit messages
+- 📈 **Statistics**: View contribution stats and activity heatmap
 - 🔐 **Secure**: Uses GitHub Personal Access Token for authentication
 - 📱 **User-Friendly**: Interactive CLI with rich progress bars and status updates
 
@@ -51,7 +52,28 @@ github-auto-commit customize-messages
   - `--backup`: Backup current settings
   - `--restore`: Restore from backup
 - `customize-messages`: Personalize commit messages
+- `stats`: View contribution statistics
+  - `--days`: Number of days to analyze (default: 30)
 - `help`: Show detailed help
+
+## Statistics and Analytics 📈
+
+View your contribution statistics with a beautiful activity heatmap:
+
+```bash
+# View last 30 days of contributions
+github-auto-commit stats
+
+# Analyze a specific time period
+github-auto-commit stats --days 90
+```
+
+The statistics view includes:
+- Total commits and active days
+- Average commits per day
+- Repository breakdown
+- Activity heatmap
+- Most active days and repositories
 
 ## Configuration Management 📋
 

@@ -141,6 +141,24 @@ def customize_messages():
             break
 
 @click.command()
+@click.option('--days', default=30, help='Number of days to analyze')
+def stats_command(days):
+    """Show contribution statistics and heatmap."""
+    config = Config()
+    token = os.getenv('GITHUB_TOKEN')
+    username = os.getenv('GITHUB_USERNAME')
+    
+    if not token or not username:
+        console.print("[red]Error: GitHub credentials not found. Please run 'setup' first.[/red]")
+        return
+    
+    try:
+        stats = ContributionStats(token)
+        stats.display_stats(username, days)
+    except Exception as e:
+        console.print(f"[red]Error fetching statistics: {str(e)}[/red]")
+
+@click.command()
 def show_help():
     """Show detailed help and examples."""
     help_text = """
@@ -153,6 +171,7 @@ Commands:
   customize-messages Customize commit messages
   start             Start the auto-commit service
   status            Show current configuration
+  stats             Show contribution statistics and heatmap
 
 Examples:
   # Make 5 quick commits
@@ -169,6 +188,9 @@ Examples:
 
   # Customize commit messages
   github-auto-commit customize-messages
+
+  # Show contribution statistics
+  github-auto-commit stats
 
 For more information, visit: https://github.com/vasanthfeb13/github-auto-commit
     """

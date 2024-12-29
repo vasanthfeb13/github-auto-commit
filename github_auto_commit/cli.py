@@ -11,6 +11,7 @@ from .commands import (
     quick_commit_command,
     config_command,
     customize_messages,
+    stats_command,
     show_help,
 )
 
@@ -26,6 +27,7 @@ cli.add_command(setup_command)
 cli.add_command(quick_commit_command)
 cli.add_command(config_command)
 cli.add_command(customize_messages)
+cli.add_command(stats_command)
 cli.add_command(show_help)
 
 def main():
