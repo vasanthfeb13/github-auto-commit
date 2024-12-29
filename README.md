@@ -6,9 +6,12 @@ A powerful command-line tool for automating GitHub contributions with customizab
 
 - 🕒 **Flexible Scheduling**: Set custom hours and days for commits
 - 📊 **Customizable Patterns**: Choose from preset commit patterns or create your own
-- 🔄 **Quick Commits**: Make immediate contributions without waiting for schedule
+- 🔄 **Quick Commits**: Make immediate contributions with progress tracking
+- 🎯 **Dry Run Mode**: Test your configuration without making actual commits
+- 💾 **Config Backup/Restore**: Easily backup and restore your settings
+- 📝 **Custom Messages**: Personalize your commit messages
 - 🔐 **Secure**: Uses GitHub Personal Access Token for authentication
-- 📱 **User-Friendly**: Interactive CLI with clear feedback and status updates
+- 📱 **User-Friendly**: Interactive CLI with rich progress bars and status updates
 
 ## Installation 📦
 
@@ -20,56 +23,51 @@ pip install github-auto-commit
 
 1. **Setup your GitHub credentials**:
 ```bash
-github-auto-commit setup --username YOUR_USERNAME --token YOUR_TOKEN
+github-auto-commit setup
 ```
 
-2. **Configure your commit schedule**:
+2. **Make some quick commits**:
 ```bash
-github-auto-commit configure
+# Make 5 commits
+github-auto-commit quick-commit --count 5
+
+# Test with dry run
+github-auto-commit quick-commit --dry-run
 ```
 
-3. **Start making contributions**:
+3. **Customize commit messages**:
 ```bash
-# Start scheduled service
-github-auto-commit start
-
-# Or make quick commits
-github-auto-commit quick-commit --count 3
+github-auto-commit customize-messages
 ```
 
 ## Available Commands 🛠️
 
 - `setup`: Configure GitHub credentials
-- `configure`: Interactive configuration wizard
-- `start`: Start the auto-commit service
 - `quick-commit`: Make immediate commits
-- `set-schedule`: Customize commit schedule
-- `set-frequency`: Set commit frequency
-- `status`: View current configuration
+  - `--count`: Number of commits to make
+  - `--message`: Custom commit message
+  - `--dry-run`: Test without making actual commits
+- `config`: Manage configuration
+  - `--backup`: Backup current settings
+  - `--restore`: Restore from backup
+- `customize-messages`: Personalize commit messages
 - `help`: Show detailed help
 
-## Schedule Presets 📅
+## Configuration Management 📋
 
-- **Work Hours**: 9 AM - 5 PM, weekdays
-- **Evening Only**: 6 PM - 10 PM, weekdays
-- **Weekend Warrior**: 10 AM - 8 PM, weekends
-- **Night Owl**: 8 PM - 2 AM, weekdays
-
-## Commit Patterns 📊
-
-- **Light**: 1-2 commits per day
-- **Moderate**: 2-4 commits per day
-- **Heavy**: 4-8 commits per day
-- **Custom**: Set your own range
-
-## Configuration Example 🔧
-
+### Backup Configuration
 ```bash
-# Set evening schedule
-github-auto-commit set-schedule --start-hour 18 --end-hour 22 --days "monday,wednesday,friday"
+github-auto-commit config --backup
+```
 
-# Set custom commit frequency
-github-auto-commit set-frequency --pattern custom --min-commits 3 --max-commits 5
+### Restore Configuration
+```bash
+github-auto-commit config --restore config_backup.json
+```
+
+### Customize Commit Messages
+```bash
+github-auto-commit customize-messages
 ```
 
 ## Security 🔒
@@ -89,3 +87,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Author ✍️
 
 Created by [Vasanth Adithya](https://github.com/vasanthfeb13)
+
+## Support 💖
+
+If you find this tool helpful, please consider giving it a star ⭐️ on GitHub!

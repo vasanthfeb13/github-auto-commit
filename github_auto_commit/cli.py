@@ -8,15 +8,10 @@ from .config import Config
 from .auto_commit import GitHubAutoCommit
 from .commands import (
     setup_command,
-    configure_command,
-    start_command,
     quick_commit_command,
-    set_schedule_command,
-    set_frequency_command,
-    show_schedule_command,
-    show_frequency_command,
-    show_help_command,
-    status_command,
+    config_command,
+    customize_messages,
+    show_help,
 )
 
 console = Console()
@@ -24,18 +19,14 @@ console = Console()
 @click.group()
 def cli():
     """GitHub Auto Commit - Automate your GitHub contributions."""
-    console.print(pyfiglet.figlet_format("GitHub Auto-Commit"))
+    ascii_art = pyfiglet.figlet_format("GitHub Auto-Commit")
+    console.print(f"[bold green]{ascii_art}[/bold green]")
 
 cli.add_command(setup_command)
-cli.add_command(configure_command)
-cli.add_command(start_command)
 cli.add_command(quick_commit_command)
-cli.add_command(set_schedule_command)
-cli.add_command(set_frequency_command)
-cli.add_command(show_schedule_command)
-cli.add_command(show_frequency_command)
-cli.add_command(show_help_command)
-cli.add_command(status_command)
+cli.add_command(config_command)
+cli.add_command(customize_messages)
+cli.add_command(show_help)
 
 def main():
     """Main entry point for the CLI."""
