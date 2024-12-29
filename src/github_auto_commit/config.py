@@ -1,78 +1,84 @@
 """Configuration management for GitHub Auto Commit."""
 
-import os
 import json
+import os
+import shutil
+from datetime import datetime
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
 
 class Config:
-    """Manages configuration for GitHub Auto Commit."""
+    """Manages configuration settings."""
     
     def __init__(self):
         """Initialize configuration."""
-        self.config_dir = Path.home() / '.github-auto-commit'
+        self.config_dir = Path.home() / '.github_auto_commit'
         self.config_file = self.config_dir / 'config.json'
-        self.create_config_dir()
-        self.load_config()
-
-    def create_config_dir(self) -> None:
-        """Create configuration directory if it doesn't exist."""
+        self._ensure_config_exists()
+        
+    def _ensure_config_exists(self):
+        """Ensure configuration directory and file exist."""
         self.config_dir.mkdir(parents=True, exist_ok=True)
-
-    def load_config(self) -> None:
+        if not self.config_file.exists():
+            self._save_config(self._get_default_config())
+    
+    def _get_default_config(self) -> Dict[str, Any]:
+        """Get default configuration."""
+        return {
+            'github_username': '',
+            'github_token': '',
+            'commit_messages': [
+                "Update documentation",
+                "Fix typo",
+                "Update README",
+                "Add new feature",
+                "Improve performance",
+                "Fix bug",
+                "Clean up code",
+                "Refactor code",
+                "Update dependencies",
+                "Add tests"
+            ]
+        }
+    
+    def _load_config(self) -> Dict[str, Any]:
         """Load configuration from file."""
-        if self.config_file.exists():
+        try:
             with open(self.config_file, 'r') as f:
-                self.config = json.load(f)
-        else:
-            self.config = {
-                'github_token': '',
-                'github_username': '',
-                'commit_messages': [
-                    'Update documentation',
-                    'Fix typo',
-                    'Update README',
-                    'Add new feature',
-                    'Fix bug',
-                    'Improve performance',
-                    'Update dependencies',
-                    'Refactor code',
-                    'Add tests',
-                    'Update CI/CD'
-                ]
-            }
-            self.save_config()
-
-    def save_config(self) -> None:
+                return json.load(f)
+        except Exception as e:
+            print(f"Error loading config: {e}")
+            return self._get_default_config()
+    
+    def _save_config(self, config: Dict[str, Any]):
         """Save configuration to file."""
         with open(self.config_file, 'w') as f:
-            json.dump(self.config, f, indent=4)
-
-    def get(self, key: str) -> Any:
-        """Get configuration value."""
-        return self.config.get(key)
-
-    def set(self, key: str, value: Any) -> None:
-        """Set configuration value."""
-        self.config[key] = value
-        self.save_config()
-
-    def backup(self, backup_file: Optional[str] = None) -> str:
-        """Backup configuration to file."""
-        if not backup_file:
-            backup_file = str(self.config_dir / 'config_backup.json')
-        with open(backup_file, 'w') as f:
-            json.dump(self.config, f, indent=4)
-        return backup_file
-
-    def restore(self, backup_file: str) -> None:
-        """Restore configuration from backup."""
-        with open(backup_file, 'r') as f:
-            self.config = json.load(f)
-        self.save_config()
-
-    def reset(self) -> None:
+            json.dump(config, f, indent=4)
+    
+    def get(self, key: str, default: Any = None) -> Any:
+        """Get a configuration value."""
+        config = self._load_config()
+        return config.get(key, default)
+    
+    def set(self, key: str, value: Any):
+        """Set a configuration value."""
+        config = self._load_config()
+        config[key] = value
+        self._save_config(config)
+    
+    def reset(self):
         """Reset configuration to defaults."""
-        if self.config_file.exists():
-            self.config_file.unlink()
-        self.load_config()
+        self._save_config(self._get_default_config())
+    
+    def backup(self) -> str:
+        """Backup the configuration file."""
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        backup_file = self.config_dir / f'config_backup_{timestamp}.json'
+        shutil.copy2(self.config_file, backup_file)
+        return str(backup_file)
+    
+    def restore(self, backup_file: str):
+        """Restore configuration from backup."""
+        if not os.path.exists(backup_file):
+            raise FileNotFoundError(f"Backup file not found: {backup_file}")
+        shutil.copy2(backup_file, self.config_file)
