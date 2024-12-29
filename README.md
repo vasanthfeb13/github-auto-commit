@@ -49,12 +49,26 @@
 
 #### Unix/macOS
 ```bash
+# Install the package
 python3 -m pip install --user github-auto-commit
+
+# Run commands using Python module syntax (recommended)
+python3 -m github_auto_commit [command]
+
+# Or add to PATH and run directly (see PATH setup below)
+github-auto-commit [command]
 ```
 
 #### Windows
 ```cmd
+# Install the package
 py -m pip install --user github-auto-commit
+
+# Run commands using Python module syntax (recommended)
+py -m github_auto_commit [command]
+
+# Or add to PATH and run directly (see PATH setup below)
+github-auto-commit [command]
 ```
 
 ### From source
@@ -83,12 +97,48 @@ cd github-auto-commit
 py -m pip install --user -e .
 ```
 
+### Setting up PATH
+
+After installation, you might need to add the Python user bin directory to your PATH:
+
+#### Unix/macOS
+Add this to your shell configuration file (`~/.bashrc`, `~/.zshrc`, or similar):
+```bash
+# Add Python user bin directory to PATH
+export PATH="$HOME/Library/Python/3.12/bin:$PATH"
+```
+
+Then reload your shell configuration:
+```bash
+source ~/.bashrc  # or source ~/.zshrc
+```
+
+#### Windows
+1. Open System Properties (Win + Pause)
+2. Click on "Advanced system settings"
+3. Click on "Environment Variables"
+4. Under "User variables" find "Path"
+5. Click "Edit" and add Python Scripts directory:
+   ```
+   %USERPROFILE%\AppData\Roaming\Python\Python312\Scripts
+   ```
+6. Click "OK" to save
+
+Alternatively, you can always run the package using the Python module syntax:
+```bash
+# Unix/macOS
+python3 -m github_auto_commit [command]
+
+# Windows
+py -m github_auto_commit [command]
+```
+
 ### Verify Installation
 
 After installation, verify that the tool is installed correctly:
 
 ```bash
-github-auto-commit --version
+python3 -m github_auto_commit --version
 ```
 
 ## 🚀 Quick Start
@@ -96,7 +146,7 @@ github-auto-commit --version
 1. **Set up GitHub credentials**
 ```bash
 # Unix/macOS
-github-auto-commit setup
+python3 -m github_auto_commit setup
 
 # Windows (if added to PATH)
 github-auto-commit setup
@@ -108,7 +158,7 @@ py -m github_auto_commit setup
 2. **Make your first commits**
 ```bash
 # Unix/macOS
-github-auto-commit quick-commit --count 3
+python3 -m github_auto_commit quick-commit --count 3
 
 # Windows (if added to PATH)
 github-auto-commit quick-commit --count 3
@@ -130,10 +180,10 @@ py -m github_auto_commit quick-commit --count 3
 2. **Configure the Tool**
 ```bash
 # Interactive setup
-github-auto-commit setup
+python3 -m github_auto_commit setup
 
 # Or use command-line arguments
-github-auto-commit setup --username YOUR_USERNAME --token YOUR_TOKEN
+python3 -m github_auto_commit setup --username YOUR_USERNAME --token YOUR_TOKEN
 ```
 
 ### Making Contributions
@@ -141,22 +191,22 @@ github-auto-commit setup --username YOUR_USERNAME --token YOUR_TOKEN
 #### Quick Commits
 ```bash
 # Make 5 commits immediately
-github-auto-commit quick-commit --count 5
+python3 -m github_auto_commit quick-commit --count 5
 
 # Test configuration with dry run
-github-auto-commit quick-commit --dry-run
+python3 -m github_auto_commit quick-commit --dry-run
 
 # Custom commit message
-github-auto-commit quick-commit --message "Update documentation"
+python3 -m github_auto_commit quick-commit --message "Update documentation"
 ```
 
 #### Customizing Commit Messages
 ```bash
 # Launch interactive message editor
-github-auto-commit customize-messages
+python3 -m github_auto_commit customize-messages
 
 # View current messages
-github-auto-commit customize-messages --show
+python3 -m github_auto_commit customize-messages --show
 ```
 
 ### Configuration Management
@@ -164,23 +214,23 @@ github-auto-commit customize-messages --show
 #### Backup Your Settings
 ```bash
 # Create backup
-github-auto-commit config --backup
+python3 -m github_auto_commit config --backup
 
 # Restore from backup
-github-auto-commit config --restore config_backup.json
+python3 -m github_auto_commit config --restore config_backup.json
 ```
 
 ### Statistics and Analytics
 
 ```bash
 # View last 30 days of contributions
-github-auto-commit stats
+python3 -m github_auto_commit stats
 
 # Analyze last 90 days
-github-auto-commit stats --days 90
+python3 -m github_auto_commit stats --days 90
 
 # View repository breakdown
-github-auto-commit stats --repos
+python3 -m github_auto_commit stats --repos
 ```
 
 The statistics view shows:
@@ -218,29 +268,29 @@ The statistics view shows:
 
 ```bash
 # Start with quick commits
-github-auto-commit quick-commit --count 3
+python3 -m github_auto_commit quick-commit --count 3
 
 # View your stats
-github-auto-commit stats
+python3 -m github_auto_commit stats
 
 # Backup configuration
-github-auto-commit config --backup
+python3 -m github_auto_commit config --backup
 ```
 
 ### Advanced Usage
 
 ```bash
 # Custom commit pattern with progress bar
-github-auto-commit quick-commit --count 5 --delay 2
+python3 -m github_auto_commit quick-commit --count 5 --delay 2
 
 # Analyze specific time period
-github-auto-commit stats --days 90 --repos
+python3 -m github_auto_commit stats --days 90 --repos
 
 # Dry run with custom message
-github-auto-commit quick-commit --dry-run --message "Update docs"
+python3 -m github_auto_commit quick-commit --dry-run --message "Update docs"
 
 # Interactive commit message customization
-github-auto-commit customize-messages
+python3 -m github_auto_commit customize-messages
 ```
 
 ## 🤔 FAQ
@@ -252,10 +302,10 @@ github-auto-commit customize-messages
 **A:** No, it only modifies the repositories you explicitly configure it to work with.
 
 ### Q: Can I customize commit messages?
-**A:** Yes! Use `github-auto-commit customize-messages` to set your own messages.
+**A:** Yes! Use `python3 -m github_auto_commit customize-messages` to set your own messages.
 
 ### Q: What if I want to stop the service?
-**A:** Use `Ctrl+C` to stop the service, or run `github-auto-commit stop`.
+**A:** Use `Ctrl+C` to stop the service, or run `python3 -m github_auto_commit stop`.
 
 ### Q: How do I update to the latest version?
 **A:** Run `pip install --upgrade github-auto-commit`
@@ -275,7 +325,7 @@ github-auto-commit customize-messages
    - Use `--delay` option with quick-commit
 
 3. **Configuration Issues**
-   - Run `github-auto-commit config --reset` to start fresh
+   - Run `python3 -m github_auto_commit config --reset` to start fresh
    - Use `--backup` before making changes
    - Check logs for detailed error messages
 
