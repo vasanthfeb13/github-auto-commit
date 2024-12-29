@@ -1,14 +1,14 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "github-auto-commit"
-version = "1.0.2"
+version = "1.1.0"
+description = "A powerful tool for automating GitHub contributions with an interactive CLI"
 authors = [
-    { name="Vasanth Adithya", email="vasanthfeb13@gmail.com" },
+    { name="Your Name", email="your.email@example.com" },
 ]
-description = "A powerful command-line tool for automating GitHub contributions"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
@@ -31,6 +31,9 @@ dependencies = [
     "requests>=2.25.0",
     "python-dotenv>=0.19.0",
     "questionary>=1.10.0",
+    "GitPython>=3.1.0",
+    "schedule>=1.1.0",
+    "pyfiglet>=0.8.0"
 ]
 
 [project.urls]
@@ -41,11 +44,8 @@ dependencies = [
 [project.scripts]
 github-auto-commit = "github_auto_commit.cli:main"
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.hatch.build.targets.wheel]
+packages = ["src/github_auto_commit"]
 
 [tool.pytest.ini_options]
 addopts = "--cov=github_auto_commit"
