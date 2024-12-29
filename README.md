@@ -255,7 +255,7 @@ Need help? Here are some ways to get support:
 
 1. Check the [FAQ](#faq) section
 2. Open an [issue](https://github.com/vasanthfeb13/github-auto-commit/issues)
-3. Join our [Discord community](https://discord.gg/github-auto-commit)
+3. follow me on insta (https://www.instagram.com/vasanthadithya_m/)
 
 ---
 
