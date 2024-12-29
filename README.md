@@ -4,7 +4,6 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/github-auto-commit.svg)](https://pypi.org/project/github-auto-commit/)
 [![Python Versions](https://img.shields.io/pypi/pyversions/github-auto-commit.svg)](https://pypi.org/project/github-auto-commit/)
-[![Downloads](https://pepy.tech/badge/github-auto-commit)](https://pepy.tech/project/github-auto-commit)
 [![Tests](https://github.com/vasanthfeb13/github-auto-commit/actions/workflows/python-package.yml/badge.svg)](https://github.com/vasanthfeb13/github-auto-commit/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
