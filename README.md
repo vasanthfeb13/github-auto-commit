@@ -2,53 +2,30 @@
 
 <div align="center">
 
-[![PyPI version](https://img.shields.io/pypi/v/github-auto-commit.svg)](https://pypi.org/project/github-auto-commit/)
-[![Python Versions](https://img.shields.io/pypi/pyversions/github-auto-commit.svg)](https://pypi.org/project/github-auto-commit/)
-[![Downloads](https://pepy.tech/badge/github-auto-commit)](https://pepy.tech/project/github-auto-commit)
-[![Tests](https://github.com/vasanthfeb13/github-auto-commit/actions/workflows/python-package.yml/badge.svg)](https://github.com/vasanthfeb13/github-auto-commit/actions)
+[![PyPI version](https://badge.fury.io/py/github-auto-commit.svg)](https://badge.fury.io/py/github-auto-commit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Versions](https://img.shields.io/pypi/pyversions/github-auto-commit.svg)](https://pypi.org/project/github-auto-commit/)
+[![Tests](https://github.com/vasanthfeb13/github-auto-commit/actions/workflows/python-package.yml/badge.svg)](https://github.com/vasanthfeb13/github-auto-commit/actions)
+[![Downloads](https://pepy.tech/badge/github-auto-commit)](https://pepy.tech/project/github-auto-commit)
 
-**A powerful command-line tool for automating GitHub contributions with style! 🎨**
+**A powerful command-line tool for automating GitHub contributions with customizable schedules and patterns.**
+
+[Installation](#-installation) •
+[Quick Start](#-quick-start) •
+[Features](#-features) •
+[Usage Guide](#-usage-guide) •
+[Configuration](#️-configuration) •
+[Examples](#-examples) •
+[FAQ](#-faq)
 
 </div>
-
-## 📚 Table of Contents
-
-<details open>
-<summary>Click to expand/collapse</summary>
-
-- [✨ Features](#-features)
-- [📦 Installation](#-installation)
-  - [Prerequisites](#prerequisites)
-  - [Via pip](#via-pip-recommended)
-  - [From source](#from-source)
-- [🚀 Quick Start](#-quick-start)
-- [📖 Usage Guide](#-usage-guide)
-  - [Initial Setup](#initial-setup)
-  - [Making Contributions](#making-contributions)
-  - [Configuration Management](#configuration-management)
-  - [Statistics and Analytics](#statistics-and-analytics)
-- [⚙️ Configuration](#️-configuration)
-  - [Commit Patterns](#commit-patterns)
-  - [Schedule Options](#schedule-options)
-- [💡 Examples](#-examples)
-  - [Basic Usage](#basic-usage)
-  - [Advanced Usage](#advanced-usage)
-- [🤔 FAQ](#-faq)
-- [🔧 Troubleshooting](#-troubleshooting)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [🙏 Acknowledgments](#-acknowledgments)
-- [📞 Support](#-support)
-
-</details>
 
 ## ✨ Features
 
 <details open>
 <summary>Click to expand/collapse</summary>
 
-- 🕒 **Flexible Scheduling**: Set custom hours and days for commits
+- ⏰ **Flexible Scheduling**: Set custom hours and days for commits
 - 📊 **Customizable Patterns**: Choose from preset commit patterns or create your own
 - 🔄 **Quick Commits**: Make immediate contributions with progress tracking
 - 🎯 **Dry Run Mode**: Test your configuration without making actual commits
@@ -56,7 +33,7 @@
 - 📝 **Custom Messages**: Personalize your commit messages
 - 📈 **Statistics**: View contribution stats and activity heatmap
 - 🔐 **Secure**: Uses GitHub Personal Access Token for authentication
-- 📱 **User-Friendly**: Interactive CLI with rich progress bars and status updates
+- 🎨 **User-Friendly**: Interactive CLI with rich progress bars and status updates
 
 </details>
 
