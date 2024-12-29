@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Versions](https://img.shields.io/pypi/pyversions/github-auto-commit.svg)](https://pypi.org/project/github-auto-commit/)
 [![Tests](https://github.com/vasanthfeb13/github-auto-commit/actions/workflows/python-package.yml/badge.svg)](https://github.com/vasanthfeb13/github-auto-commit/actions)
-[![Downloads](https://pepy.tech/badge/github-auto-commit)](https://pepy.tech/project/github-auto-commit)
+
 
 **A powerful command-line tool for automating GitHub contributions with customizable schedules and patterns.**
 
