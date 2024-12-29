@@ -5,6 +5,8 @@
 [![PyPI version](https://badge.fury.io/py/github-auto-commit.svg)](https://badge.fury.io/py/github-auto-commit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Versions](https://img.shields.io/pypi/pyversions/github-auto-commit.svg)](https://pypi.org/project/github-auto-commit/)
+[![Code Coverage](https://codecov.io/gh/vasanthfeb13/github-auto-commit/branch/main/graph/badge.svg)](https://codecov.io/gh/vasanthfeb13/github-auto-commit)
+[![Tests](https://github.com/vasanthfeb13/github-auto-commit/actions/workflows/python-package.yml/badge.svg)](https://github.com/vasanthfeb13/github-auto-commit/actions)
 
 **A powerful command-line tool for automating GitHub contributions with style! 🎨**
 
@@ -127,6 +129,9 @@ github-auto-commit stats
 
 # Analyze last 90 days
 github-auto-commit stats --days 90
+
+# View repository breakdown
+github-auto-commit stats --repos
 ```
 
 The statistics view shows:
@@ -135,6 +140,7 @@ The statistics view shows:
 - Repository breakdown
 - Activity heatmap
 - Most active days and repositories
+- Contribution trends
 
 ## ⚙️ Configuration
 
@@ -155,6 +161,7 @@ The statistics view shows:
 | Evening | 6PM-10PM | Mon-Fri | After-hours coding |
 | Weekend | 10AM-8PM | Sat-Sun | Weekend warrior |
 | Night Owl | 8PM-2AM | Any | Late-night coding |
+| Custom | Any | Any | Your preferred schedule |
 
 ## 💡 Examples
 
@@ -174,14 +181,17 @@ github-auto-commit config --backup
 ### Advanced Usage
 
 ```bash
-# Custom commit pattern
+# Custom commit pattern with progress bar
 github-auto-commit quick-commit --count 5 --delay 2
 
 # Analyze specific time period
-github-auto-commit stats --days 90
+github-auto-commit stats --days 90 --repos
 
 # Dry run with custom message
 github-auto-commit quick-commit --dry-run --message "Update docs"
+
+# Interactive commit message customization
+github-auto-commit customize-messages
 ```
 
 ## 🤔 FAQ
@@ -198,35 +208,36 @@ github-auto-commit quick-commit --dry-run --message "Update docs"
 ### Q: What if I want to stop the service?
 **A:** Use `Ctrl+C` to stop the service, or run `github-auto-commit stop`.
 
+### Q: How do I update to the latest version?
+**A:** Run `pip install --upgrade github-auto-commit`
+
 ## 🔧 Troubleshooting
 
 ### Common Issues
 
 1. **Authentication Failed**
-   ```bash
-   # Verify credentials
-   github-auto-commit setup --verify
-   ```
+   - Ensure your GitHub token has the correct permissions
+   - Try regenerating your token
+   - Check if token is correctly set in configuration
 
 2. **Rate Limiting**
-   - Wait a few minutes and try again
-   - Check your rate limit status: `github-auto-commit status`
+   - GitHub API has rate limits
+   - Try reducing commit frequency
+   - Use `--delay` option with quick-commit
 
 3. **Configuration Issues**
-   ```bash
-   # Reset configuration
-   github-auto-commit config --reset
-   ```
+   - Run `github-auto-commit config --reset` to start fresh
+   - Use `--backup` before making changes
+   - Check logs for detailed error messages
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here's how you can help:
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create your feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## 📄 License
 
@@ -234,23 +245,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Thanks to all contributors who have helped shape this tool
-- Built with [Click](https://click.palletsprojects.com/) and [Rich](https://rich.readthedocs.io/)
+- Thanks to all contributors
+- Built with [Rich](https://github.com/Textualize/rich) for beautiful CLI
 - Inspired by the GitHub community
 
-## 📬 Contact
+## 📞 Support
 
-Created by [Vasanth Adithya](https://github.com/vasanthfeb13)
+Need help? Here are some ways to get support:
 
-## ⭐ Support
-
-If you find this tool helpful, please consider:
-- Giving it a star on GitHub ⭐
-- Sharing it with friends and colleagues
-- Contributing to its development
+1. Check the [FAQ](#faq) section
+2. Open an [issue](https://github.com/vasanthfeb13/github-auto-commit/issues)
+3. Join our [Discord community](https://discord.gg/github-auto-commit)
 
 ---
 
 <div align="center">
-Made with ❤️ by the GitHub community
+Made with ❤️ by the GitHub Auto Commit Team
 </div>
