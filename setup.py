@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="github-auto-commit",
-    version="1.0.0",
+    version="1.0.1",  # Match with our latest tag
     author="Vasanth Adithya",
     author_email="vasanthfeb13@gmail.com",
     description="A powerful command-line tool for automating GitHub contributions",
