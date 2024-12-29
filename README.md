@@ -40,37 +40,81 @@
 ## 📦 Installation
 
 ### Prerequisites
+
 - Python 3.8 or higher
 - Git installed and configured
 - GitHub account
 
 ### Via pip (Recommended)
+
+#### Unix/macOS
 ```bash
-pip install github-auto-commit
+python3 -m pip install --user github-auto-commit
+```
+
+#### Windows
+```cmd
+py -m pip install --user github-auto-commit
 ```
 
 ### From source
+
+#### Unix/macOS
 ```bash
+# Clone the repository
 git clone https://github.com/vasanthfeb13/github-auto-commit.git
+
+# Navigate to the directory
 cd github-auto-commit
-pip install -e .
+
+# Install in editable mode
+python3 -m pip install --user -e .
+```
+
+#### Windows
+```cmd
+# Clone the repository
+git clone https://github.com/vasanthfeb13/github-auto-commit.git
+
+# Navigate to the directory
+cd github-auto-commit
+
+# Install in editable mode
+py -m pip install --user -e .
+```
+
+### Verify Installation
+
+After installation, verify that the tool is installed correctly:
+
+```bash
+github-auto-commit --version
 ```
 
 ## 🚀 Quick Start
 
-1. **Install the package**
+1. **Set up GitHub credentials**
 ```bash
-pip install github-auto-commit
-```
-
-2. **Set up GitHub credentials**
-```bash
+# Unix/macOS
 github-auto-commit setup
+
+# Windows (if added to PATH)
+github-auto-commit setup
+
+# Windows (alternative)
+py -m github_auto_commit setup
 ```
 
-3. **Make your first commits**
+2. **Make your first commits**
 ```bash
+# Unix/macOS
 github-auto-commit quick-commit --count 3
+
+# Windows (if added to PATH)
+github-auto-commit quick-commit --count 3
+
+# Windows (alternative)
+py -m github_auto_commit quick-commit --count 3
 ```
 
 ## 📖 Usage Guide
