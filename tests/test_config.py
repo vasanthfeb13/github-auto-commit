@@ -27,7 +27,17 @@ def temp_git_repo():
         os.environ["GITHUB_TOKEN"] = "test-token"
         os.environ["GITHUB_USERNAME"] = "test-user"
         
+        # Create a bare repo to serve as remote
+        remote_dir = tempfile.mkdtemp()
+        remote_repo = git.Repo.init(remote_dir, bare=True)
+        
+        # Add remote to the repo
+        repo.create_remote('origin', remote_dir)
+        
         yield temp_dir
+        
+        # Cleanup
+        os.system(f"rm -rf {remote_dir}")
 
 @pytest.fixture
 def config():
@@ -45,6 +55,7 @@ def config():
         # Set test values
         test_config.set("github_username", "test-user")
         test_config.set("github_token", "test-token")
+        test_config.set("repository_path", str(temp_dir))
         
         yield test_config
 
@@ -77,17 +88,18 @@ def test_config_backup_restore(config):
     config.restore(backup_file)
     assert config.get("commit_messages") == ["Test message"]
 
-@pytest.mark.skipif(not os.environ.get("GITHUB_TOKEN"), reason="No GitHub token available")
 def test_auto_commit_initialization(temp_git_repo, config):
     """Test GitHubAutoCommit initialization."""
     os.chdir(temp_git_repo)
+    config.set("repository_path", temp_git_repo)
     auto_commit = GitHubAutoCommit(config)
     assert isinstance(auto_commit.repo, git.Repo)
+    assert auto_commit.repo.remotes  # Verify remote exists
 
-@pytest.mark.skipif(not os.environ.get("GITHUB_TOKEN"), reason="No GitHub token available")
 def test_make_single_commit(temp_git_repo, config):
     """Test making a single commit."""
     os.chdir(temp_git_repo)
+    config.set("repository_path", temp_git_repo)
     auto_commit = GitHubAutoCommit(config)
     
     # Make a commit
@@ -101,6 +113,7 @@ def test_make_single_commit(temp_git_repo, config):
 def test_get_stats(temp_git_repo, config):
     """Test getting commit statistics."""
     os.chdir(temp_git_repo)
+    config.set("repository_path", temp_git_repo)
     auto_commit = GitHubAutoCommit(config)
     
     stats = auto_commit.get_stats(days=30)
